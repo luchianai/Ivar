@@ -11,7 +11,7 @@ apk add mariadb-connector-c
 
 # install s3 tools
 apk add python3 py3-pip
-pip install awscli
+pip install awscli --break-system-packages
 
 # cleanup
 rm -rf /var/cache/apk/*
