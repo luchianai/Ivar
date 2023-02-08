@@ -1,17 +1,17 @@
 #!/bin/sh
 
-# exit if a command fails
+# Exit If a Command Fails
 set -eo pipefail
 
 apk update
 
-# install mysqldump
+# Install mysqldump
 apk add mysql-client
 apk add mariadb-connector-c
 
-# install s3 tools
+# Install S3 Tools
 apk add python3 py3-pip
 pip install awscli --break-system-packages
 
-# cleanup
+# Cleanup
 rm -rf /var/cache/apk/*

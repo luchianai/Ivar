@@ -123,4 +123,3 @@ else
 fi
 
 echo "SQL backup finished"
-
