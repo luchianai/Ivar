@@ -1,0 +1,38 @@
+version: '3.8'
+
+ services:
+    # MYSQL Container
+    db:
+      image: 'mysql:8.4'
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=d_ropen
+        - MYSQL_USER=u_ropen
+        - MYSQL_PASSWORD=m06rs011e9h9ihuboi7s
+        - MYSQL_ALLOW_EMPTY_PASSWORD=no
+      restart: unless-stopped
+      healthcheck:
+        test: '/usr/bin/mysql --user=u_ropen --password=m06rs011e9h9ihuboi7s --execute "SHOW DATABASES;"'
+        interval: 10s
+        timeout: 5s
+        retries: 5
+      volumes:
+        - db_data:/var/lib/mysql
+      ports:
+        - "3306:3306"
+
+    # Ivar Container
+    ivar:
+      image: "clivern/ivar:0.1.1"
+      environment:
+        - MYSQL_HOST=db
+        - MYSQL_PORT=3306
+        - MYSQL_USER=u_ropen
+        - MYSQL_PASSWORD=m06rs011e9h9ihuboi7s
+        - MYSQL_DATABASE=d_ropen
+      depends_on:
+        - db
+      restart: unless-stopped
+
+volumes:
+    db_data: null
