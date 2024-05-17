@@ -18,4 +18,4 @@ Ivar
 Note
 ====
 
-This Project is Read Only and a Part of Ropen Infrastructure.
+This Project is Read Only and a Part of Luchian Infrastructure.
